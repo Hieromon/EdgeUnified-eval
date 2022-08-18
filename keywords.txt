@@ -1,0 +1,29 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+EdgeDriver	KEYWORD1
+EdgeUnified	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+abort	KEYWORD2
+attach	KEYWORD2
+autoRestore	KEYWORD2
+autoSave	KEYWORD2
+clearInterval	KEYWORD2
+enable	KEYWORD2
+end	KEYWORD2
+error	KEYWORD2
+getInterval	KEYWORD2
+isAutoRestore	KEYWORD2
+isAutoSave	KEYWORD2
+join	KEYWORD2
+portal	KEYWORD2
+process	KEYWORD2
+release	KEYWORD2
+restore	KEYWORD2
+save	KEYWORD2
+serializer	KEYWORD2
+setInterval	KEYWORD2
+start	KEYWORD2
