@@ -6,7 +6,7 @@
 
 ## Aims of EdgeUnified
 
-By leveraging EdgeUnified, Sketch can integrate multiple devices and their corresponding custom web pages into a single application. The library provides classes and programming models for integration and extends the functionality of AutoConnect, a WiFi connectivity aid for ESP8266/ESP32.
+By leveraging EdgeUnified, Sketch can integrate multiple devices and their corresponding custom web pages into a single application. The library provides classes and programming models for integration and extends the functionality of [AutoConnect](https://github.com/Hieromon/AutoConnect), a WiFi connectivity aid for ESP8266/ESP32.
 
 ##
 
@@ -14,19 +14,27 @@ Sketches using AutoConnect, for example, owns the logic around IO, such as MQTT 
 
 In addition, similar processes that are normally required, such as loading custom web pages or saving configuration parameters, are scattered throughout the source code, reducing maintainability.
 
-EdgeUnified performs these normally required routine processes on behalf of the user sketch, combining the device IO and AutoConnect custom web page pairs into a single event loop. It has the following features:
+EdgeUnified performs these normally required routine processes on behalf of the user sketch, combining the device IO and [AutoConnect custom web page](https://hieromon.github.io/AutoConnect/acintro.html) pairs into a single event loop. It has the following features:
 
 1. EdgeUnified controls the main event loop. In the sketch, the setup function just attaches the pair of the device IO processing and the AutoConnectAux JSON definition of the corresponding UI implementation. Then, the loop function simply calls the Edge.process function.
 2. Various parameters required for device IO are saved and restored by EdgeUnified. There is no need to write those file IO operations in the user sketch.
 3. Allows periodicity in device IO processing. Periodic execution operations are performed by EdgeUnified.
 
+## To lead a project to the goal
+
+I welcome contributions to the EdgeUnified. There are many topics to pursue availability in the EdgeUnified programming model, including functions to be implemented, use cases to be assumed, and constraints to be met. For themes suggestions, please go to the [Discussions](https://github.com/Hieromon/EdgeUnified-eval/discussions).
+
+[Issues](https://github.com/Hieromon/EdgeUnified-eval/issues) should be presented with the minimum reproducible code and hardware conditions.
+
+**Please also follow along with [this Discussions](https://github.com/Hieromon/AutoConnect/discussions/515).** You can see the origins of EdgeUnified there.
+
 ## EdgeUnified Programming model
 
-Currently in writing.
+Currently in writing. The draft is [here](https://github.com/Hieromon/AutoConnect/discussions/515#discussioncomment-3314411).
 
 ## EdgeUnified classes
 
-Currently in writing.
+Currently in writing. Please refer to the function header comments in the source code for now.
 
 ## Requirements
 
@@ -75,3 +83,13 @@ Install third-party platform using the *Boards Manager* of Arduino IDE. You can 
 ## Installation
 
 Clone or download from the [EdgeUnified-eval](https://github.com/Hieromon/EdgeUnified-eval) GitHub repository.
+
+## License
+
+Copyright (c) Hieromon Ikasamo. All rights reserved.
+
+Licensed under the [MIT](https://github.com/Hieromon/EdgeUnified-eval/blob/main/LICENSE) license.
+
+## Special thanks
+
+This project was inspired by the inspiration of @FRANAIRBUS. I thank giving a new perspective.
