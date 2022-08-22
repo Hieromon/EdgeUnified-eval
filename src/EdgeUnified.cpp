@@ -306,17 +306,47 @@ void EdgeUnified::join(const __FlashStringHelper* json, AuxHandlerFunctionT auxH
 /**
  * Combines multiple JSON description of the AutoConnectAux custom web page
  * and the request handler pairs into EdgeUnified at once.
+ * If page specifier has the `FILE:` identifier, the join try to load JSON
+ * from the file.
  * @param  pages  Array of JSON and the request handler pairs.
  */
 void EdgeUnified::join(const std::vector<EdgeAux>& pages) {
-  for (const EdgeAux& page : pages) {    
+  for (const EdgeAux& page : pages) {
     if (!page.json && !page.json_p) {
       ED_DBG("AutoConnectAux JSON descriptor missing\n");
       continue;
     }
+
+    // Determines the input source of the JSON description.
+    // If `PGM_P json` has a File: identifier as prefix, then a JSON description
+    // file is loaded from the stream originating from its opened.
+    File  jsonFile;
+    if (page.json) {
+      const char* jsonIn = page.json;
+      const char* jsonProtocol = ED_AUXJSONPROTOCOL_FILE;
+      int diff = 0;
+      while (!diff && *jsonProtocol)
+        diff = tolower((int)*jsonIn++) - (int)*jsonProtocol++;
+      if (!diff) {
+        jsonFile = AUTOCONNECT_APPLIED_FILESYSTEM.open(jsonIn, "r");
+        if (!jsonFile.available()) {
+          ED_DBG("join %s open failed or empty\n", page.json);
+          continue;
+        }
+      }
+    }
+
     AutoConnectAux* aux = new AutoConnectAux;
     if (aux) {
-      if (page.json_p ? aux->load(page.json_p) : aux->load(page.json)) {
+      // Loading AutoConnectAux JSON description
+      bool  ldcc = false;
+      if (jsonFile)
+        ldcc = aux->load(jsonFile);
+      else if (page.json)
+        ldcc = aux->load(page.json);
+      else if (page.json_p)
+        ldcc = aux->load(page.json_p);
+      if (ldcc) {
         if (page.auxHandler) {
           aux->on(page.auxHandler);
           if (_portal) {
@@ -340,6 +370,10 @@ void EdgeUnified::join(const std::vector<EdgeAux>& pages) {
     else {
       ED_DBG("New AutoConnectAux allocation failed\n");
     }
+
+    // Delete instances in `file:` of `PGM_P json` file.
+    if (jsonFile)
+      jsonFile.close();
   }
 }
 

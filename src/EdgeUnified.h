@@ -2,8 +2,8 @@
  *	Declaration of EdgeUnified classes.
  *	@file	EdgeUnified.h
  *	@author	hieromon@gmail.com
- *	@version	0.9.0
- *	@date	2022-08-03
+ *	@version	0.9.1
+ *	@date	2022-08-23
  *	@copyright	MIT license.
  */
 
@@ -69,6 +69,11 @@ namespace EdgeUnifiedNS { using WebServer = WebServer; };
 #ifndef ED_GETTYPE_TERMINATOR
 #define ED_GETTYPE_TERMINATOR                 ';'
 #endif // !ED_GETTYPE_TERMINATOR
+
+//
+#ifndef ED_AUXJSONPROTOCOL_FILE
+#define ED_AUXJSONPROTOCOL_FILE               "file:"
+#endif // !ED_AUXJSONPROTOCOL_FILE
 
 /**
  * EdgeAux: Combines a JSON description of a custom web page interpreted
