@@ -2,8 +2,8 @@
  *	EdgeUnified implementations.
  *	@file	EdgeUnified.cpp
  *	@author	hieromon@gmail.com
- *	@version	0.9.0
- *	@date	2022-08-03
+ *	@version	0.9.1
+ *	@date	2022-08-23
  *	@copyright	MIT license.
  */
 

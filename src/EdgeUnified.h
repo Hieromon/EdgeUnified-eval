@@ -34,7 +34,7 @@ namespace EdgeUnifiedNS { using WebServer = WebServer; };
 
 #ifdef ED_DEBUG
 #define ED_DBG_DUMB(fmt, ...) do {ED_DEBUG_PORT.printf_P((PGM_P)PSTR(fmt), ## __VA_ARGS__ );} while (0)
-#define ED_DBG(fmt, ...) do {ED_DEBUG_PORT.printf_P((PGM_P)PSTR("[EG] " fmt), ## __VA_ARGS__ );} while (0)
+#define ED_DBG(fmt, ...) do {ED_DEBUG_PORT.printf_P((PGM_P)PSTR("[ED] " fmt), ## __VA_ARGS__ );} while (0)
 #else
 #define ED_DBG(...) do {(void)0;} while(0)
 #define ED_DBG_DUMB(...) do {(void)0;} while(0)
