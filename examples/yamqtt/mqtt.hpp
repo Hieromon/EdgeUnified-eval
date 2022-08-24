@@ -52,6 +52,7 @@
  */
 WiFiClient    wifiClient;
 PubSubClient  mqttClient(wifiClient);
+void startMDNS(void);
 
 namespace EdgeMQTT {
 
@@ -449,6 +450,12 @@ void startMQTT() {
   mqtt.data.inPublish = false;
   mqtt.data.retryInterval = 5000;
   mqttClient.setServer(mqtt.data.server.c_str(), 1883);
+  if (mqtt.data.hostname.length()) {
+    if (!mqtt.data.hostname.equalsIgnoreCase(String(WiFi.getHostname()))) {
+      WiFi.setHostname(mqtt.data.hostname.c_str());
+      startMDNS();
+    }
+  }
 }
 
 /**
