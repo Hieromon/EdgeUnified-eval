@@ -11,11 +11,11 @@ abort	KEYWORD2
 attach	KEYWORD2
 autoRestore	KEYWORD2
 autoSave	KEYWORD2
-clearInterval	KEYWORD2
+clearEdgeInterval	KEYWORD2
 enable	KEYWORD2
 end	KEYWORD2
 error	KEYWORD2
-getInterval	KEYWORD2
+getEdgeInterval	KEYWORD2
 isAutoRestore	KEYWORD2
 isAutoSave	KEYWORD2
 join	KEYWORD2
@@ -25,5 +25,5 @@ release	KEYWORD2
 restore	KEYWORD2
 save	KEYWORD2
 serializer	KEYWORD2
-setInterval	KEYWORD2
+setEdgeInterval	KEYWORD2
 start	KEYWORD2

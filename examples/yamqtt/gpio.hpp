@@ -136,7 +136,7 @@ String auxGPIOSetting(AutoConnectAux& aux, PageArgument& args) {
 String auxGPIOApply(AutoConnectAux& aux, PageArgument& args) {
   gpio.data.pin = aux["pin"].as<AutoConnectText>().value.toInt();
   gpio.data.cycle = aux["cycle"].as<AutoConnectText>().value.toInt();
-  gpio.setInterval(gpio.data.cycle);
+  gpio.setEdgeInterval(gpio.data.cycle);
   gpio.save();
   return String();
 }
@@ -148,7 +148,7 @@ void startGPIO() {
   Serial.println("Starting GPIO");
   pinMode(gpio.data.pin, OUTPUT);
   digitalWrite(gpio.data.pin, !LED_ACTIVE);
-  gpio.setInterval(gpio.data.cycle);
+  gpio.setEdgeInterval(gpio.data.cycle);
 }
 
 /**

@@ -3,7 +3,7 @@
  *	@file	EdgeUnified.cpp
  *	@author	hieromon@gmail.com
  *	@version	0.9.1
- *	@date	2022-08-23
+ *	@date	2022-08-24
  *	@copyright	MIT license.
  */
 
@@ -94,7 +94,7 @@ void EdgeDriverBase::start(const long interval) {
     restore();
 
   if (interval >= 0)
-    setInterval(interval);
+    setEdgeInterval(interval);
 
   if (_cbStart)
     _cbStart();
@@ -204,7 +204,7 @@ void EdgeDriverBase::serializer(EdgeDataSerializerT serializer, EdgeDataSerializ
 
 /**
  * Constrains the execution of the relevant EdgeDriver by cycle.
- * EdgeDriverBase::setInterval function allows the EdgeDriver::process
+ * EdgeDriverBase::setEdgeInterval function allows the EdgeDriver::process
  * has a periodicity of the driver execution. This _elapse function measures
  * the period when the EdgeDriver has periodicity.
  * EdgeDriver's periodic process function calls do not utilize timer

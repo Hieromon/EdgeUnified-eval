@@ -3,7 +3,7 @@
  *	@file	EdgeUnified.h
  *	@author	hieromon@gmail.com
  *	@version	0.9.1
- *	@date	2022-08-23
+ *	@date	2022-08-24
  *	@copyright	MIT license.
  */
 
@@ -142,9 +142,9 @@ class EdgeDriverBase {
   void  start(const long interval = -1);
   
   // Controls the periodicity of the active state of EdgeDriver::process
-  void  clearInterval(void) { setInterval(0); }
-  unsigned long getInterval(void) const { return _interval; }
-  void  setInterval(const unsigned long interval) { _interval = interval; _tm = millis(); }
+  void  clearEdgeInterval(void) { setEdgeInterval(0); }
+  unsigned long getEdgeInterval(void) const { return _interval; }
+  void  setEdgeInterval(const unsigned long interval) { _interval = interval; _tm = millis(); }
   
   // Serialization and deserialization of EdgeData
   void  autoRestore(const bool onOff);
