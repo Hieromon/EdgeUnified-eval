@@ -20,6 +20,11 @@
 // Define EdgeData structure for GPIO.
 // This is the data structure handled by GPIO EdgeDriver. It has GPIO pins
 // connected to LEDs and a blinking cycle.
+#ifndef LED_BUILTIN
+#pragma message("Warning, LED_BUILTIN is undefined. Assumes Pin #2.")
+#define LED_BUILTIN 2
+#endif
+
 typedef struct {
   int     pin = LED_BUILTIN;
   unsigned long cycle = 500;
