@@ -38,6 +38,9 @@ typedef struct {
 // External linkage of EdgeDriver MQTT instance.
 extern EdgeDriver<MQTT_t>  mqtt;
 
+// Other required external linkages.
+void startMDNS(void);
+
 // Declares that main.ino can refer to EdgeDriver's on-demand functions. It is
 // referenced by the EdgeUnified::attach function.
 void startMQTT(void);

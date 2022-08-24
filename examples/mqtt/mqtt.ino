@@ -52,19 +52,25 @@ void handleRoot() {
   server.send(200, "text/html", content);
 }
 
-void onWiFiConnect(IPAddress& ip) {
-  const char* hostName = WiFi.getHostname();
-
-  Serial.println("connected:" + WiFi.SSID());
-  Serial.println("IP:" + WiFi.localIP().toString());
-  Serial.printf("mDNS responder %s.local start", hostName);
-  if (MDNS.begin(hostName)) {
+void startMDNS(void) {
+  if (MDNS.queryService("http", "tcp"))
+    MDNS.end();
+  
+  const char* hostname = WiFi.getHostname();
+  Serial.printf("mDNS responder %s.local start", hostname);
+  if (MDNS.begin(hostname)) {
     MDNS.addService("http", "tcp", 80);
     Serial.println("ed");
   }
   else {
     Serial.println(" failed");
   }
+}
+
+void onWiFiConnect(IPAddress& ip) {
+  Serial.println("connected:" + WiFi.SSID());
+  Serial.println("IP:" + WiFi.localIP().toString());
+  startMDNS();
 }
 
 /**
